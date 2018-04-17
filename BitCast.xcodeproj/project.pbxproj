@@ -14,6 +14,7 @@
 		012C5E232085B0CC00719F59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012C5E212085B0CC00719F59 /* LaunchScreen.storyboard */; };
 		012C5E2E2085B0CC00719F59 /* BitCastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C5E2D2085B0CC00719F59 /* BitCastTests.swift */; };
 		012C5E392085B0CD00719F59 /* BitCastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C5E382085B0CD00719F59 /* BitCastUITests.swift */; };
+		01F4404D2085B90A00A31883 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4404C2085B90A00A31883 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		012C5E342085B0CD00719F59 /* BitCastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		012C5E382085B0CD00719F59 /* BitCastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCastUITests.swift; sourceTree = "<group>"; };
 		012C5E3A2085B0CD00719F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01F4404C2085B90A00A31883 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				012C5E1F2085B0CC00719F59 /* Assets.xcassets */,
 				012C5E212085B0CC00719F59 /* LaunchScreen.storyboard */,
 				012C5E242085B0CC00719F59 /* Info.plist */,
+				01F4404C2085B90A00A31883 /* MainTabBarController.swift */,
 			);
 			path = BitCast;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				012C5E1B2085B0BF00719F59 /* ViewController.swift in Sources */,
 				012C5E192085B0BF00719F59 /* AppDelegate.swift in Sources */,
+				01F4404D2085B90A00A31883 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +437,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,6 +456,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
