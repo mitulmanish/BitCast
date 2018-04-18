@@ -15,6 +15,12 @@
 		012C5E2E2085B0CC00719F59 /* BitCastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C5E2D2085B0CC00719F59 /* BitCastTests.swift */; };
 		012C5E392085B0CD00719F59 /* BitCastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C5E382085B0CD00719F59 /* BitCastUITests.swift */; };
 		01F4404D2085B90A00A31883 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4404C2085B90A00A31883 /* MainTabBarController.swift */; };
+		01F4405020860D6300A31883 /* PodcastsSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4404F20860D6300A31883 /* PodcastsSearchTableViewController.swift */; };
+		01F440532086125700A31883 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F440522086125700A31883 /* Podcast.swift */; };
+		01F440562086142000A31883 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F440552086142000A31883 /* SearchCell.swift */; };
+		47966A9737654F7571A1C572 /* Pods_BitCastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E320F4246183D454E29889 /* Pods_BitCastTests.framework */; };
+		9533DDE78FD37172113F5FE9 /* Pods_BitCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461979FFB28706544E1262A9 /* Pods_BitCast.framework */; };
+		A010D192294DA049485249F4 /* Pods_BitCastUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E3008A9403414855E57F58 /* Pods_BitCastUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,18 @@
 		012C5E382085B0CD00719F59 /* BitCastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCastUITests.swift; sourceTree = "<group>"; };
 		012C5E3A2085B0CD00719F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01F4404C2085B90A00A31883 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		01F4404F20860D6300A31883 /* PodcastsSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchTableViewController.swift; sourceTree = "<group>"; };
+		01F440522086125700A31883 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		01F440552086142000A31883 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		461979FFB28706544E1262A9 /* Pods_BitCast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F55EB293CC9249865214B4 /* Pods-BitCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCast.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitCast/Pods-BitCast.release.xcconfig"; sourceTree = "<group>"; };
+		6CB98F8B1E777DA4F1C7B685 /* Pods-BitCastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BitCastTests/Pods-BitCastTests.debug.xcconfig"; sourceTree = "<group>"; };
+		76E3008A9403414855E57F58 /* Pods_BitCastUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCastUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E320F4246183D454E29889 /* Pods_BitCastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5F648B74679323F1D323D8C /* Pods-BitCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BitCast/Pods-BitCast.debug.xcconfig"; sourceTree = "<group>"; };
+		D2635200AB504FC1FB8615B4 /* Pods-BitCastUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCastUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BitCastUITests/Pods-BitCastUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D8F2BEBC01C5593FBA53F15A /* Pods-BitCastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitCastTests/Pods-BitCastTests.release.xcconfig"; sourceTree = "<group>"; };
+		DE17277F674EB2721C688B6C /* Pods-BitCastUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCastUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitCastUITests/Pods-BitCastUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9533DDE78FD37172113F5FE9 /* Pods_BitCast.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47966A9737654F7571A1C572 /* Pods_BitCastTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A010D192294DA049485249F4 /* Pods_BitCastUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +104,8 @@
 				012C5E2C2085B0CC00719F59 /* BitCastTests */,
 				012C5E372085B0CD00719F59 /* BitCastUITests */,
 				012C5E162085B0BF00719F59 /* Products */,
+				EB668E613A80B86B97A6CD03 /* Pods */,
+				996F3B0E3306A487EBED3964 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +122,9 @@
 		012C5E172085B0BF00719F59 /* BitCast */ = {
 			isa = PBXGroup;
 			children = (
+				01F44054208613FE00A31883 /* Views */,
+				01F440512086124200A31883 /* Models */,
+				01F4404E20860D3200A31883 /* Controllers */,
 				012C5E182085B0BF00719F59 /* AppDelegate.swift */,
 				012C5E1A2085B0BF00719F59 /* ViewController.swift */,
 				012C5E1C2085B0BF00719F59 /* Main.storyboard */,
@@ -128,6 +154,53 @@
 			path = BitCastUITests;
 			sourceTree = "<group>";
 		};
+		01F4404E20860D3200A31883 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				01F4404F20860D6300A31883 /* PodcastsSearchTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		01F440512086124200A31883 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				01F440522086125700A31883 /* Podcast.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		01F44054208613FE00A31883 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				01F440552086142000A31883 /* SearchCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		996F3B0E3306A487EBED3964 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				461979FFB28706544E1262A9 /* Pods_BitCast.framework */,
+				A6E320F4246183D454E29889 /* Pods_BitCastTests.framework */,
+				76E3008A9403414855E57F58 /* Pods_BitCastUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB668E613A80B86B97A6CD03 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B5F648B74679323F1D323D8C /* Pods-BitCast.debug.xcconfig */,
+				50F55EB293CC9249865214B4 /* Pods-BitCast.release.xcconfig */,
+				6CB98F8B1E777DA4F1C7B685 /* Pods-BitCastTests.debug.xcconfig */,
+				D8F2BEBC01C5593FBA53F15A /* Pods-BitCastTests.release.xcconfig */,
+				D2635200AB504FC1FB8615B4 /* Pods-BitCastUITests.debug.xcconfig */,
+				DE17277F674EB2721C688B6C /* Pods-BitCastUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 012C5E3D2085B0CD00719F59 /* Build configuration list for PBXNativeTarget "BitCast" */;
 			buildPhases = (
+				5FB8F4DB9F4A223611AD4997 /* [CP] Check Pods Manifest.lock */,
 				012C5E112085B0BF00719F59 /* Sources */,
 				012C5E122085B0BF00719F59 /* Frameworks */,
 				012C5E132085B0BF00719F59 /* Resources */,
+				A56E6D662339557696C76F58 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +227,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 012C5E402085B0CD00719F59 /* Build configuration list for PBXNativeTarget "BitCastTests" */;
 			buildPhases = (
+				25B3954CAE84A30431DD53E5 /* [CP] Check Pods Manifest.lock */,
 				012C5E252085B0CC00719F59 /* Sources */,
 				012C5E262085B0CC00719F59 /* Frameworks */,
 				012C5E272085B0CC00719F59 /* Resources */,
@@ -170,6 +246,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 012C5E432085B0CD00719F59 /* Build configuration list for PBXNativeTarget "BitCastUITests" */;
 			buildPhases = (
+				9C025E717A86C77A85CE335B /* [CP] Check Pods Manifest.lock */,
 				012C5E302085B0CD00719F59 /* Sources */,
 				012C5E312085B0CD00719F59 /* Frameworks */,
 				012C5E322085B0CD00719F59 /* Resources */,
@@ -254,14 +331,92 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		25B3954CAE84A30431DD53E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitCastTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FB8F4DB9F4A223611AD4997 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitCast-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C025E717A86C77A85CE335B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitCastUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A56E6D662339557696C76F58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BitCast/Pods-BitCast-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BitCast/Pods-BitCast-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		012C5E112085B0BF00719F59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F4405020860D6300A31883 /* PodcastsSearchTableViewController.swift in Sources */,
+				01F440562086142000A31883 /* SearchCell.swift in Sources */,
 				012C5E1B2085B0BF00719F59 /* ViewController.swift in Sources */,
 				012C5E192085B0BF00719F59 /* AppDelegate.swift in Sources */,
 				01F4404D2085B90A00A31883 /* MainTabBarController.swift in Sources */,
+				01F440532086125700A31883 /* Podcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,16 +587,14 @@
 		};
 		012C5E3E2085B0CD00719F59 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5F648B74679323F1D323D8C /* Pods-BitCast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCast";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -451,16 +604,14 @@
 		};
 		012C5E3F2085B0CD00719F59 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50F55EB293CC9249865214B4 /* Pods-BitCast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCast";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -470,17 +621,14 @@
 		};
 		012C5E412085B0CD00719F59 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CB98F8B1E777DA4F1C7B685 /* Pods-BitCastTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCastTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCastTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -491,17 +639,14 @@
 		};
 		012C5E422085B0CD00719F59 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8F2BEBC01C5593FBA53F15A /* Pods-BitCastTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCastTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCastTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -512,16 +657,13 @@
 		};
 		012C5E442085B0CD00719F59 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2635200AB504FC1FB8615B4 /* Pods-BitCastUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCastUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCastUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -532,16 +674,13 @@
 		};
 		012C5E452085B0CD00719F59 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE17277F674EB2721C688B6C /* Pods-BitCastUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCastUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCastUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
