@@ -17,6 +17,7 @@
 		0152981920871A7B004F16CF /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0152981820871A7B004F16CF /* PodcastCell.xib */; };
 		0152981B20871DBB004F16CF /* PodcastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152981A20871DBB004F16CF /* PodcastTableViewCell.swift */; };
 		0152981E20899C55004F16CF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152981D20899C55004F16CF /* APIService.swift */; };
+		01BC4BE8208A1DED00DBEFAA /* PodcastDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC4BE7208A1DED00DBEFAA /* PodcastDetailTableViewController.swift */; };
 		01F4404D2085B90A00A31883 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4404C2085B90A00A31883 /* MainTabBarController.swift */; };
 		01F4405020860D6300A31883 /* PodcastsSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4404F20860D6300A31883 /* PodcastsSearchTableViewController.swift */; };
 		01F440532086125700A31883 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F440522086125700A31883 /* Podcast.swift */; };
@@ -60,6 +61,7 @@
 		0152981820871A7B004F16CF /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
 		0152981A20871DBB004F16CF /* PodcastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastTableViewCell.swift; sourceTree = "<group>"; };
 		0152981D20899C55004F16CF /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		01BC4BE7208A1DED00DBEFAA /* PodcastDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailTableViewController.swift; sourceTree = "<group>"; };
 		01F4404C2085B90A00A31883 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		01F4404F20860D6300A31883 /* PodcastsSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchTableViewController.swift; sourceTree = "<group>"; };
 		01F440522086125700A31883 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				01F4404F20860D6300A31883 /* PodcastsSearchTableViewController.swift */,
+				01BC4BE7208A1DED00DBEFAA /* PodcastDetailTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -412,11 +415,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BitCast/Pods-BitCast-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +444,7 @@
 				01F4404D2085B90A00A31883 /* MainTabBarController.swift in Sources */,
 				0152981E20899C55004F16CF /* APIService.swift in Sources */,
 				01F440532086125700A31883 /* Podcast.swift in Sources */,
+				01BC4BE8208A1DED00DBEFAA /* PodcastDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
