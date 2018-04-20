@@ -23,6 +23,10 @@ class PodcastsSearchTableViewController: UITableViewController, UISearchBarDeleg
         super.viewDidLoad()
         setupSearchBar()
         setupTableView()
+        
+        let s = SomeStruct<Int, String>()
+        s.doSomeThing(with: 5)
+        s.doSomeThingAgain(with: 5, v: "hey")
     }
     
     // MARK:- Helpers
@@ -35,12 +39,14 @@ class PodcastsSearchTableViewController: UITableViewController, UISearchBarDeleg
     }
     
     fileprivate func setupTableView() {
-        tableView.register(SearchCell.self, forCellReuseIdentifier: PodcastsSearchTableViewController.cellIdentifier)
+        let podcastNib = UINib(nibName: "PodcastCell", bundle: nil)
+        tableView.register(podcastNib, forCellReuseIdentifier: PodcastsSearchTableViewController.cellIdentifier)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let url = "https://itunes.apple.com/search"
-        Alamofire.request(url, method: .get, parameters: ["term": "\(searchText)"], encoding: URLEncoding.default, headers: nil).response { [weak self](response) in
+        let params = ["term": "\(searchText)", "media": "podcast"]
+        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).response { [weak self] (response) in
             if let error = response.error {
                 print(error)
                 return
@@ -76,12 +82,14 @@ class PodcastsSearchTableViewController: UITableViewController, UISearchBarDeleg
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PodcastsSearchTableViewController.cellIdentifier, for: indexPath) as? SearchCell ?? SearchCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: PodcastsSearchTableViewController.cellIdentifier, for: indexPath) as? PodcastTableViewCell ?? PodcastTableViewCell()
         cell.selectionStyle = .none
         let podcast = podcasts[indexPath.row]
-        cell.textLabel?.text = podcast.trackName
-        cell.detailTextLabel?.text = podcast.artistName
-        cell.imageView?.image = #imageLiteral(resourceName: "appicon")
+        cell.configureCell(trackName: podcast.trackName ?? "", artistName: podcast.artistName ?? "", episodeCount: 10)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 124
     }
 }
