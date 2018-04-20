@@ -16,6 +16,7 @@
 		012C5E392085B0CD00719F59 /* BitCastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C5E382085B0CD00719F59 /* BitCastUITests.swift */; };
 		0152981920871A7B004F16CF /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0152981820871A7B004F16CF /* PodcastCell.xib */; };
 		0152981B20871DBB004F16CF /* PodcastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152981A20871DBB004F16CF /* PodcastTableViewCell.swift */; };
+		0152981E20899C55004F16CF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152981D20899C55004F16CF /* APIService.swift */; };
 		01F4404D2085B90A00A31883 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4404C2085B90A00A31883 /* MainTabBarController.swift */; };
 		01F4405020860D6300A31883 /* PodcastsSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4404F20860D6300A31883 /* PodcastsSearchTableViewController.swift */; };
 		01F440532086125700A31883 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F440522086125700A31883 /* Podcast.swift */; };
@@ -58,6 +59,7 @@
 		012C5E3A2085B0CD00719F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0152981820871A7B004F16CF /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
 		0152981A20871DBB004F16CF /* PodcastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastTableViewCell.swift; sourceTree = "<group>"; };
+		0152981D20899C55004F16CF /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		01F4404C2085B90A00A31883 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		01F4404F20860D6300A31883 /* PodcastsSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchTableViewController.swift; sourceTree = "<group>"; };
 		01F440522086125700A31883 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		012C5E172085B0BF00719F59 /* BitCast */ = {
 			isa = PBXGroup;
 			children = (
+				0152981C20899C21004F16CF /* API */,
 				01F44054208613FE00A31883 /* Views */,
 				01F440512086124200A31883 /* Models */,
 				01F4404E20860D3200A31883 /* Controllers */,
@@ -156,6 +159,14 @@
 				012C5E3A2085B0CD00719F59 /* Info.plist */,
 			);
 			path = BitCastUITests;
+			sourceTree = "<group>";
+		};
+		0152981C20899C21004F16CF /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0152981D20899C55004F16CF /* APIService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		01F4404E20860D3200A31883 /* Controllers */ = {
@@ -401,10 +412,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BitCast/Pods-BitCast-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -424,6 +437,7 @@
 				0152981B20871DBB004F16CF /* PodcastTableViewCell.swift in Sources */,
 				012C5E192085B0BF00719F59 /* AppDelegate.swift in Sources */,
 				01F4404D2085B90A00A31883 /* MainTabBarController.swift in Sources */,
+				0152981E20899C55004F16CF /* APIService.swift in Sources */,
 				01F440532086125700A31883 /* Podcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,10 +616,7 @@
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCast";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -622,10 +633,7 @@
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCast";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -642,11 +650,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCastTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCastTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -664,11 +668,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCastTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCastTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -685,11 +685,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCastUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCastUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -706,11 +702,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNF8E69GKB;
 				INFOPLIST_FILE = BitCastUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mitul-manish.BitCastUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

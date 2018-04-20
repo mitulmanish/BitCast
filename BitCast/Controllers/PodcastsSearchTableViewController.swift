@@ -12,10 +12,7 @@ import Alamofire
 class PodcastsSearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     static let cellIdentifier = "cellId"
-    var podcasts: [Podcast] = [
-        Podcast(trackName: "Tech Crunch", artistName: "Xavier Hernandez"),
-        Podcast(trackName: "Wired", artistName: "Zoey Simmons")
-    ]
+    var podcasts = [Podcast]()
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -23,15 +20,12 @@ class PodcastsSearchTableViewController: UITableViewController, UISearchBarDeleg
         super.viewDidLoad()
         setupSearchBar()
         setupTableView()
-        
-        let s = SomeStruct<Int, String>()
-        s.doSomeThing(with: 5)
-        s.doSomeThingAgain(with: 5, v: "hey")
     }
     
     // MARK:- Helpers
     
     fileprivate func setupSearchBar() {
+        definesPresentationContext = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.dimsBackgroundDuringPresentation = false
@@ -41,33 +35,18 @@ class PodcastsSearchTableViewController: UITableViewController, UISearchBarDeleg
     fileprivate func setupTableView() {
         let podcastNib = UINib(nibName: "PodcastCell", bundle: nil)
         tableView.register(podcastNib, forCellReuseIdentifier: PodcastsSearchTableViewController.cellIdentifier)
+        tableView.tableFooterView = UIView()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let url = "https://itunes.apple.com/search"
-        let params = ["term": "\(searchText)", "media": "podcast"]
-        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).response { [weak self] (response) in
-            if let error = response.error {
-                print(error)
-                return
-            }
-            guard let data = response.data else {
-                return
-            }
-            
-            do {
-                let searchResults = try JSONDecoder().decode(SearchResult.self, from: data)
-                self?.podcasts = searchResults.results.flatMap({ $0 }) ?? []
-                self?.tableView.reloadData()
-            } catch let decodeError {
-                print(decodeError)
+        APIService.shared.fetchPodcasts(with: searchText) { (podcasts, error) in
+            if let err = error {
+                print(err)
+            } else if let podcasts = podcasts {
+                self.podcasts = podcasts
+                self.tableView.reloadData()
             }
         }
-    }
-    
-    struct SearchResult: Codable {
-        var resultCount: Int?
-        var results: [Podcast]?
     }
 
     // MARK: - Table view data source
@@ -85,11 +64,27 @@ class PodcastsSearchTableViewController: UITableViewController, UISearchBarDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: PodcastsSearchTableViewController.cellIdentifier, for: indexPath) as? PodcastTableViewCell ?? PodcastTableViewCell()
         cell.selectionStyle = .none
         let podcast = podcasts[indexPath.row]
-        cell.configureCell(trackName: podcast.trackName ?? "", artistName: podcast.artistName ?? "", episodeCount: 10)
+        cell.configureCell(trackName: podcast.trackName ?? "",
+                           artistName: podcast.artistName ?? "",
+                           episodeCount: podcast.trackCount ?? 0,
+                           imageUrl: podcast.artworkUrl600 ?? "")
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 124
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please search for a Podcast"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .blue
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return podcasts.isEmpty ? 200 : 0
     }
 }
