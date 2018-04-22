@@ -18,6 +18,8 @@ class PodcastTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        podcastImageView.layer.cornerRadius = 4
+        podcastImageView.clipsToBounds = true
     }
     
     func configureCell(trackName: String, artistName: String, episodeCount: Int, imageUrl: String) {

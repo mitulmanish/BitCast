@@ -20,9 +20,9 @@ class PodcastDetailTableViewController: UITableViewController {
     }
     
     fileprivate func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        let cellNib = UINib(nibName: "PodcastDetailTableViewCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         tableView.separatorStyle = .none
-        
     }
     
     func getDataFromFeed() {
@@ -42,7 +42,7 @@ class PodcastDetailTableViewController: UITableViewController {
                     break
                 }
                 for item in items {
-                    let episode = Episode(title: item.title ?? "", publicationDate: item.pubDate)
+                    let episode = Episode(feedItem: item)
                     self?.episodes.append(episode)
                     DispatchQueue.main.async { [weak self] in
                         self?.tableView.reloadData()
@@ -54,11 +54,6 @@ class PodcastDetailTableViewController: UITableViewController {
                 break
             }
         }
-    }
-    
-    struct Episode {
-        var title: String
-        var publicationDate: Date?
     }
     
     var episodes = [Episode]()
@@ -79,10 +74,14 @@ class PodcastDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PodcastDetailTableViewCell
+        let episode = episodes[indexPath.row]
         cell.selectionStyle = .none
-        let episode = episodes[indexPath.item]
-        cell.textLabel?.text = episode.title
+        cell.configure(publishedDate: episode.publicationDate, episodeName: episode.title, episodeDescription: episode.description)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
 }
