@@ -10,13 +10,19 @@ import Foundation
 import FeedKit
 
 struct Episode {
-    var title: String
-    var publicationDate: Date
-    var description: String
+    let author: String
+    let title: String
+    let publicationDate: Date
+    let description: String
+    var imageUrl: String?
+    var streamUrl: String
     
     init(feedItem: RSSFeedItem) {
+        self.author = feedItem.iTunes?.iTunesAuthor ?? ""
         self.title = feedItem.title ?? ""
         self.publicationDate = feedItem.pubDate ?? Date()
-        self.description = feedItem.description ?? ""
+        self.description = feedItem.iTunes?.iTunesSubtitle ?? feedItem.description ?? ""
+        self.imageUrl = feedItem.iTunes?.iTunesImage?.attributes?.href?.sanitizeUrl()
+        self.streamUrl = feedItem.enclosure?.attributes?.url ?? ""
     }
 }

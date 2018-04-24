@@ -12,10 +12,22 @@ import FeedKit
 class PodcastDetailTableViewController: UITableViewController {
     private let cellIdentifier = "cellId"
     
+    fileprivate func fetchEpisodes(_ sanitizedUrl: String) {
+        APIService.shared.getDataFromFeed(with: sanitizedUrl) { [weak self] (episodes) in
+            self?.episodes = episodes
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
     var podcast: Podcast? {
         didSet {
             navigationItem.title = podcast?.trackName ?? ""
-            getDataFromFeed()
+            guard let sanitizedUrl = podcast?.feedUrl?.sanitizeUrl() else {
+                return
+            }
+            fetchEpisodes(sanitizedUrl)
         }
     }
     
@@ -23,37 +35,6 @@ class PodcastDetailTableViewController: UITableViewController {
         let cellNib = UINib(nibName: "PodcastDetailTableViewCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         tableView.separatorStyle = .none
-    }
-    
-    func getDataFromFeed() {
-        guard let feedUrl = podcast?.feedUrl else {
-            return
-        }
-        
-        let santizedUrl = feedUrl.hasPrefix("https") ? feedUrl : feedUrl.replacingOccurrences(of: "http", with: "https")
-        guard let url = URL(string: santizedUrl), let feedParser = FeedParser(URL: url) else {
-            return
-        }
-        
-        feedParser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { [weak self] (result) in
-            switch result {
-            case .rss(let feed):
-                guard let items = feed.items else {
-                    break
-                }
-                for item in items {
-                    let episode = Episode(feedItem: item)
-                    self?.episodes.append(episode)
-                    DispatchQueue.main.async { [weak self] in
-                        self?.tableView.reloadData()
-                    }
-                }
-            case .failure(let err):
-                print(err)
-            default:
-                break
-            }
-        }
     }
     
     var episodes = [Episode]()
@@ -77,11 +58,21 @@ class PodcastDetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PodcastDetailTableViewCell
         let episode = episodes[indexPath.row]
         cell.selectionStyle = .none
-        cell.configure(publishedDate: episode.publicationDate, episodeName: episode.title, episodeDescription: episode.description)
+        cell.configure(publishedDate: episode.publicationDate, episodeName: episode.title, episodeDescription: episode.description, episodeImagUrl: episode.imageUrl ?? "")
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let window = UIApplication.shared.keyWindow
+        guard let playerDetailsView = Bundle.main.loadNibNamed("PlayersDetailView", owner: self, options: nil)?.first as? PlayersDetailView else {
+            return
+        }
+        playerDetailsView.frame = self.view.frame
+        playerDetailsView.episode = self.episodes[indexPath.row]
+        window?.addSubview(playerDetailsView)
     }
 }

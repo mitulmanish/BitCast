@@ -30,15 +30,13 @@ class PodcastDetailTableViewCell: UITableViewCell {
         episodeImageView.clipsToBounds = true
     }
     
-    func stringify(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
-    func configure(publishedDate: Date, episodeName: String, episodeDescription: String) {
-        self.publishedDate.text = stringify(date: publishedDate)
+    func configure(publishedDate: Date, episodeName: String, episodeDescription: String, episodeImagUrl: String) {
+        self.publishedDate.text = publishedDate.stringify()
         self.episodeName.text = episodeName
         self.episodeDescription.text = episodeDescription
+        guard let url = URL(string: episodeImagUrl) else {
+            return
+        }
+        self.episodeImageView.sd_setImage(with: url, completed: nil)
     }
 }

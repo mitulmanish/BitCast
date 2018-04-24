@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import FeedKit
 
 class APIService {
     struct SearchResult: Codable {
@@ -39,6 +40,21 @@ class APIService {
             } catch let decodeError {
                 completionHandler(nil, decodeError)
             }
+        }
+    }
+    
+    func getDataFromFeed(with feedUrl: String, completionHandler: @escaping ([Episode]) -> ()) {
+        let santizedUrl = feedUrl.sanitizeUrl()
+        guard let url = URL(string: santizedUrl), let feedParser = FeedParser(URL: url) else {
+            return
+        }
+        
+        feedParser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
+            guard let feed = result.rssFeed else {
+                return
+            }
+            let episodes = feed.toEpisodes() ?? []
+            completionHandler(episodes)
         }
     }
 }
