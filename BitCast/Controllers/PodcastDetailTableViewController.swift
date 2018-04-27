@@ -15,7 +15,8 @@ class PodcastDetailTableViewController: UITableViewController {
     fileprivate func fetchEpisodes(_ sanitizedUrl: String) {
         APIService.shared.getDataFromFeed(with: sanitizedUrl) { [weak self] (episodes) in
             self?.episodes = episodes
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                self?.activityIndicatorView?.stopAnimating()
                 self?.tableView.reloadData()
             }
         }
@@ -58,7 +59,10 @@ class PodcastDetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PodcastDetailTableViewCell
         let episode = episodes[indexPath.row]
         cell.selectionStyle = .none
-        cell.configure(publishedDate: episode.publicationDate, episodeName: episode.title, episodeDescription: episode.description, episodeImagUrl: episode.imageUrl ?? "")
+        cell.configure(publishedDate: episode.publicationDate,
+                       episodeName: episode.title,
+                       episodeDescription: episode.description,
+                       episodeImagUrl: episode.imageUrl ?? "")
         return cell
     }
     
@@ -68,11 +72,26 @@ class PodcastDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let window = UIApplication.shared.keyWindow
-        guard let playerDetailsView = Bundle.main.loadNibNamed("PlayersDetailView", owner: self, options: nil)?.first as? PlayersDetailView else {
+        guard let playerDetailsView = Bundle.main.loadNibNamed("PlayersDetailView",
+                                                               owner: self,
+                                                               options: nil)?.first as? PlayersDetailView else {
             return
         }
         playerDetailsView.frame = self.view.frame
         playerDetailsView.episode = self.episodes[indexPath.row]
         window?.addSubview(playerDetailsView)
+    }
+    
+    var activityIndicatorView: UIActivityIndicatorView?
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView?.activityIndicatorViewStyle = .gray
+        activityIndicatorView?.hidesWhenStopped = true
+        activityIndicatorView?.startAnimating()
+        return activityIndicatorView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return episodes.isEmpty ? 200 : 0
     }
 }

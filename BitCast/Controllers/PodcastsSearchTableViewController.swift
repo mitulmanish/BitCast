@@ -38,15 +38,19 @@ class PodcastsSearchTableViewController: UITableViewController, UISearchBarDeleg
         tableView.tableFooterView = UIView()
     }
     
+    var searchTimer: Timer?
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        APIService.shared.fetchPodcasts(with: searchText) { (podcasts, error) in
-            if let err = error {
-                print(err)
-            } else if let podcasts = podcasts {
-                self.podcasts = podcasts
-                self.tableView.reloadData()
+        searchTimer?.invalidate()
+        searchTimer = Timer.scheduledTimer(withTimeInterval: 0.35, repeats: false, block: { (_) in
+            APIService.shared.fetchPodcasts(with: searchText) { [weak self] (podcasts, error) in
+                if let err = error {
+                    print(err)
+                } else if let podcasts = podcasts {
+                    self?.podcasts = podcasts
+                    self?.tableView.reloadData()
+                }
             }
-        }
+        })
     }
 
     // MARK: - Table view data source
