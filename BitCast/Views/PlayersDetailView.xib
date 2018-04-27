@@ -129,7 +129,7 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muted_volume" translatesAutoresizingMaskIntoConstraints="NO" id="VER-Jy-AJW">
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="36"/>
                                 </imageView>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iEG-Rc-NtP">
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iEG-Rc-NtP">
                                     <rect key="frame" x="-2" y="0.0" width="276" height="37"/>
                                     <connections>
                                         <action selector="volumeSliderTouched:" destination="iN0-l3-epB" eventType="valueChanged" id="FgM-fC-DqN"/>

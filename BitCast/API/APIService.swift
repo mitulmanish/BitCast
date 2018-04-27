@@ -45,16 +45,18 @@ class APIService {
     
     func getDataFromFeed(with feedUrl: String, completionHandler: @escaping ([Episode]) -> ()) {
         let santizedUrl = feedUrl.sanitizeUrl()
-        guard let url = URL(string: santizedUrl), let feedParser = FeedParser(URL: url) else {
-            return
-        }
-        
-        feedParser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
-            guard let feed = result.rssFeed else {
+        DispatchQueue.global(qos: .background).async {
+            guard let url = URL(string: santizedUrl), let feedParser = FeedParser(URL: url) else {
                 return
             }
-            let episodes = feed.toEpisodes() ?? []
-            completionHandler(episodes)
+            
+            feedParser.parseAsync { (result) in
+                guard let feed = result.rssFeed else {
+                    return
+                }
+                let episodes = feed.toEpisodes() ?? []
+                completionHandler(episodes)
+            }
         }
     }
 }

@@ -11,24 +11,54 @@ import AVKit
 
 class PlayersDetailView: UIView {
     
+    enum PlayerControlType: Double {
+        case forward = 15, rewind = -15
+        
+        func calculateTime(for player: AVPlayer) -> CMTime {
+            let playerTime = player.currentTime()
+            switch self {
+            case .forward:
+                return playerTime + CMTime(seconds: rawValue, preferredTimescale: 1)
+            case .rewind:
+                return playerTime + CMTime(seconds: rawValue, preferredTimescale: 1)
+            }
+        }
+    }
+    
+    // MARK:- IBOutlets & Actions
     
     @IBOutlet weak var episodeProgressSlider: UISlider!
     @IBOutlet weak var volumeSlider: UISlider!
     @IBOutlet weak var rewindButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
-    
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var totalTimeLabel: UILabel!
     
-    
     @IBAction func episodeProgressBarTouched(_ sender: UISlider) {
+        let intendedMovement = sender.value
+        guard let totalEpisodeDuration = player.currentItem?.duration else {
+            return
+        }
+        let totalDurationInSeconds = CMTimeGetSeconds(totalEpisodeDuration)
+        
+        let newValue = Float64(intendedMovement) * totalDurationInSeconds
+        let newTime = CMTime(seconds: newValue, preferredTimescale: 1)
+        player.seek(to: newTime)
     }
     
     @IBAction func volumeSliderTouched(_ sender: UISlider) {
+        player.volume = sender.value
     }
     
     @IBAction func rewindButtonPressed(_ sender: UIButton) {
+        let newTime = PlayerControlType.rewind.calculateTime(for: player)
+        player.seek(to: newTime)
+    }
+    
+    @IBAction func forwardButtonPressed(_ sender: UIButton) {
+        let newTime = PlayerControlType.forward.calculateTime(for: player)
+        player.seek(to: newTime)
     }
     
     @IBAction func playButtonPressed(_ sender: UIButton) {
@@ -41,9 +71,6 @@ class PlayersDetailView: UIView {
             player.play()
             animateEpisodeImageView(withAnimationType: .expand)
         }
-    }
-    
-    @IBAction func forwardButtonPressed(_ sender: UIButton) {
     }
     
     var episode: Episode! {
