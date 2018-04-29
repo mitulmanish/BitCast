@@ -71,15 +71,11 @@ class PodcastDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let window = UIApplication.shared.keyWindow
-        guard let playerDetailsView = Bundle.main.loadNibNamed("PlayersDetailView",
-                                                               owner: self,
-                                                               options: nil)?.first as? PlayersDetailView else {
+        guard let mainTabController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else {
             return
         }
-        playerDetailsView.frame = self.view.frame
-        playerDetailsView.episode = self.episodes[indexPath.row]
-        window?.addSubview(playerDetailsView)
+        mainTabController.playerDetailView?.episode = self.episodes[indexPath.row]
+        mainTabController.animatePlayerDetailsView(withAnimationType: .expand)
     }
     
     var activityIndicatorView: UIActivityIndicatorView?

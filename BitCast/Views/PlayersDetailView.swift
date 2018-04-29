@@ -110,8 +110,17 @@ class PlayersDetailView: UIView {
     @IBOutlet weak var episodeTitleLabel: UILabel!
     @IBOutlet weak var episodeAuthor: UILabel!
     
+    @objc private func maximizePlayerView() {
+        guard let mainTabController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else {
+            return
+        }
+        mainTabController.animatePlayerDetailsView(withAnimationType: .expand)
+    }
     @IBAction func dismissButtonPressed(_ sender: UIButton) {
-        self.removeFromSuperview()
+        guard let mainTabController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else {
+            return
+        }
+        mainTabController.animatePlayerDetailsView(withAnimationType: .shrink)
     }
     
     enum AnimationType {
@@ -163,11 +172,22 @@ class PlayersDetailView: UIView {
         episodeProgressSlider.value = Float(progressPercentage)
     }
     
+    
+    static func initFromNib() -> PlayersDetailView? {
+        return Bundle.main.loadNibNamed("PlayersDetailView",
+                                        owner: self,
+                                        options: nil)?.first as? PlayersDetailView
+    }
+    
     override func awakeFromNib() {
         episodeImageView.layer.cornerRadius = 4
         episodeImageView.clipsToBounds = true
         
         observePlayAndPause()
         observeEpisodeProgress()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(maximizePlayerView))
+        addGestureRecognizer(tapGesture)
+        
     }
 }

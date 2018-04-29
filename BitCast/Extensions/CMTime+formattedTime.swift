@@ -11,11 +11,10 @@ import AVKit
 
 extension CMTime {
     func toTimeInHourMinuteAndSeconds() -> String {
-        let timeInFloat64 = CMTimeGetSeconds(self)
-        guard !timeInFloat64.isNaN else {
+        if CMTimeGetSeconds(self).isNaN {
             return "--:--:--"
         }
-        let timeInSeconds = Int(timeInFloat64)
+        let timeInSeconds = Int(CMTimeGetSeconds(self))
         let seconds = timeInSeconds % 60
         let minutes = timeInSeconds % (60 * 60) / 60
         let hours = timeInSeconds / 60 / 60
